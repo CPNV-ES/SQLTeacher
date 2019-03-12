@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SQLTeacher.Models
 {
@@ -12,7 +13,9 @@ namespace SQLTeacher.Models
         }
 
         public int Id { get; set; }
+        [DisplayName("Script")]
         public string DbScript { get; set; }
+        [DisplayName("Titre")]
         public string Title { get; set; }
 
         public ICollection<Participants> Participants { get; set; }
