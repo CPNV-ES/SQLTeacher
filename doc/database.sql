@@ -71,7 +71,8 @@ CREATE TABLE people (
   email VARCHAR(100) NOT NULL,
   acronym VARCHAR(3) NULL,
   classe_id INT NOT NULL,
-  role_id INT NOT NULL);
+  role_id INT NOT NULL,
+  pin_code INT NOT NULL UNIQUE);
 
 -- -----------------------------------------------------
 -- Table exercises

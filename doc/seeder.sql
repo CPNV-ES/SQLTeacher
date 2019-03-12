@@ -32,20 +32,20 @@ INSERT INTO classes(name) VALUES ('SI-T1a'), ('SI-T2a'), ('SI-T1b'), ('SI-T2b')
 -- Roles
 -- ***********************************************************************************
 -- Create roles
-INSERT INTO roles(name) VALUES ('admin'), ('student')
+INSERT INTO roles(name) VALUES ('teacher'), ('student')
 -- ***********************************************************************************
 
 -- ***********************************************************************************
 -- People
 -- ***********************************************************************************
 -- Create people
-INSERT INTO people(firstname, lastname, email, acronym, classe_id, role_id) VALUES 
-('Benjamin','Delacombaz','benjamin.delacombaz@cpnv.ch','BDZ',2,2),
-('Razmo','Lux','razmo.lux@cpnv.ch','RLX',2,2),
-('Bernard','Ramirez','bernard.ramirez@cpnv.ch','BRZ',2,2),
-('Marcel','Liota','marcel.liota@cpnv.ch','MLA',2,2),
-('Daniel','Schaad','daniel.schaad@cpnv.ch','DSD',2,2),
-('Xavier','Carrel','xavier.carrel@cpnv.ch','XCL',2,1)
+INSERT INTO people(firstname, lastname, email, acronym, classe_id, role_id, pin_code) VALUES 
+('Benjamin','Delacombaz','benjamin.delacombaz@cpnv.ch','BDZ',2,2,ABS(CHECKSUM(RAND())) % 9999),
+('Razmo','Lux','razmo.lux@cpnv.ch','RLX',2,2,ABS(CHECKSUM(RAND())) % 9999),
+('Bernard','Ramirez','bernard.ramirez@cpnv.ch','BRZ',2,2,ABS(CHECKSUM(RAND())) % 9999),
+('Marcel','Liota','marcel.liota@cpnv.ch','MLA',2,2,ABS(CHECKSUM(RAND())) % 9999),
+('Daniel','Schaad','daniel.schaad@cpnv.ch','DSD',2,2,ABS(CHECKSUM(RAND())) % 9999),
+('Xavier','Carrel','xavier.carrel@cpnv.ch','XCL',2,1,ABS(CHECKSUM(RAND())) % 9999)
 -- ***********************************************************************************
 
 -- ***********************************************************************************
