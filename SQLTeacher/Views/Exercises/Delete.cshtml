@@ -4,30 +4,30 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Supprimer</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Voulez-vous vraiment supprimer cet exercice ?</h3>
 <div>
-    <h4>Exercises</h4>
+    <h4>Exercice</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DbScript)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DbScript)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Title)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DbScript)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DbScript)
+        </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Supprimer" class="btn btn-default" /> |
+        <a asp-action="Index">Retour vers la liste</a>
     </form>
 </div>
