@@ -1,12 +1,12 @@
 ﻿@model SQLTeacher.Models.Queries
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Modifier";
 }
 
-<h2>Edit</h2>
+<h2>Modifier</h2>
 
-<h4>Queries</h4>
+<h4>Question</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -34,14 +34,14 @@
                 <span asp-validation-for="ExerciseId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Enregistrer" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retour vers la liste</a>
 </div>
 
 @section Scripts {

@@ -18,6 +18,7 @@ namespace SQLTeacher.Models
         public string Formulation { get; set; }
         [DisplayName("Rang")]
         public int Rank { get; set; }
+        [DisplayName("Exercice")]
         public int ExerciseId { get; set; }
 
         [DisplayName("Exercice")]

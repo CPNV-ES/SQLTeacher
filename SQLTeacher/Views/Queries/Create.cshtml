@@ -1,12 +1,12 @@
 ﻿@model SQLTeacher.Models.Queries
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Création";
 }
 
-<h2>Create</h2>
+<h2>Création</h2>
 
-<h4>Queries</h4>
+<h4>Question</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -32,14 +32,14 @@
                 <select asp-for="ExerciseId" class ="form-control" asp-items="ViewBag.ExerciseId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Ajouter" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retour vers la liste</a>
 </div>
 
 @section Scripts {
