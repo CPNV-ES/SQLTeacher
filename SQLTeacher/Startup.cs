@@ -57,10 +57,35 @@ namespace SQLTeacher
 
             app.UseMvc(routes =>
             {
+                // Routes for exercises
                 routes.MapRoute(
                     name: "exercises",
                     template: "exercises",
-                    defaults: new { controller = "Exercices", action = "Index" });
+                    defaults: new { controller = "Exercises", action = "Index" });
+                routes.MapRoute(
+                    name: "exercises-create",
+                    template: "exercises/create",
+                    defaults: new { controller = "Exercises", action = "Create" });
+                routes.MapRoute(
+                    name: "exercises-edit",
+                    template: "exercises/edit/{id}",
+                    defaults: new { controller = "Exercises", action = "Edit"});
+                routes.MapRoute(
+                    name: "exercises-delete",
+                    template: "exercises/delete/{id}",
+                    defaults: new { controller = "Exercises", action = "Delete" });
+                routes.MapRoute(
+                    name: "exercises-detail",
+                    template: "exercises/details/{id}",
+                    defaults: new { controller = "Exercises", action = "Details" });
+
+                // Routes for home
+                routes.MapRoute(
+                    name: "home",
+                    template: "/",
+                    defaults: new { controller = "Home", action = "Index" });
+
+                // Default
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
