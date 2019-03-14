@@ -47,7 +47,7 @@ namespace SQLTeacher.Controllers
         // GET: Queries/Create
         public IActionResult Create()
         {
-            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "Id", "DbScript");
+            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "Id", "Title");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace SQLTeacher.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "Id", "DbScript", queries.ExerciseId);
+            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "Id", "Title", queries.ExerciseId);
             return View(queries);
         }
 
@@ -81,7 +81,7 @@ namespace SQLTeacher.Controllers
             {
                 return NotFound();
             }
-            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "Id", "DbScript", queries.ExerciseId);
+            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "Id", "Title", queries.ExerciseId);
             return View(queries);
         }
 
@@ -117,7 +117,7 @@ namespace SQLTeacher.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "Id", "DbScript", queries.ExerciseId);
+            ViewData["ExerciseId"] = new SelectList(_context.Exercises, "Id", "Title", queries.ExerciseId);
             return View(queries);
         }
 
