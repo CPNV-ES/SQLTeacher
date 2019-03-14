@@ -1,0 +1,33 @@
+﻿@model SQLTeacher.Models.Exercises
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Supprimer</h2>
+
+<h3>Voulez-vous vraiment supprimer cet exercice ?</h3>
+<div>
+    <h4>Exercice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DbScript)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DbScript)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Supprimer" class="btn btn-default" /> |
+        <a asp-action="Index">Retour vers la liste</a>
+    </form>
+</div>

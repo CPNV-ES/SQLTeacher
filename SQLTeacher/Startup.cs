@@ -58,6 +58,10 @@ namespace SQLTeacher
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "exercises",
+                    template: "exercises",
+                    defaults: new { controller = "Exercices", action = "Index" });
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
