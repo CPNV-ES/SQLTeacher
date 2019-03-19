@@ -53,7 +53,7 @@ namespace SQLTeacher.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DbScript,Title")] Exercises exercises)
+        public async Task<IActionResult> Create([Bind("Id,DbScript,Title,IsActive")] Exercises exercises)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace SQLTeacher.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DbScript,Title")] Exercises exercises)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DbScript,Title,IsActive")] Exercises exercises)
         {
             if (id != exercises.Id)
             {

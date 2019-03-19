@@ -71,6 +71,10 @@ namespace SQLTeacher.Models
                     .HasColumnName("title")
                     .HasMaxLength(5000)
                     .IsUnicode(false);
+
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasColumnName("is_active");
             });
 
             modelBuilder.Entity<Participants>(entity =>

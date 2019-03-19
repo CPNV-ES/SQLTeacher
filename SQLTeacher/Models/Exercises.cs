@@ -17,6 +17,8 @@ namespace SQLTeacher.Models
         public string DbScript { get; set; }
         [DisplayName("Titre")]
         public string Title { get; set; }
+        [DisplayName("Actif")]
+        public bool IsActive { get; set; }
 
         public ICollection<Participants> Participants { get; set; }
         public ICollection<Queries> Queries { get; set; }
