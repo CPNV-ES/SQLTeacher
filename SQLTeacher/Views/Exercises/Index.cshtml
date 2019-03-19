@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.DbScript)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
+                @Html.EditorFor(modelItem => item.IsActive, new { htmlAttributes = new { @class = "isActiveCheckBox" } })
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
