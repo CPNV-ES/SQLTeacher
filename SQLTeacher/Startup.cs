@@ -79,6 +79,28 @@ namespace SQLTeacher
                     template: "exercises/details/{id}",
                     defaults: new { controller = "Exercises", action = "Details" });
 
+                // Routes for queries
+                routes.MapRoute(
+                    name: "queries",
+                    template: "queries",
+                    defaults: new { controller = "Queries", action = "Index" });
+                routes.MapRoute(
+                    name: "queries-create",
+                    template: "queries/create",
+                    defaults: new { controller = "Queries", action = "Create" });
+                routes.MapRoute(
+                    name: "queries-edit",
+                    template: "queries/edit/{id}",
+                    defaults: new { controller = "Queries", action = "Edit" });
+                routes.MapRoute(
+                    name: "queries-delete",
+                    template: "queries/delete/{id}",
+                    defaults: new { controller = "Queries", action = "Delete" });
+                routes.MapRoute(
+                    name: "queries-detail",
+                    template: "queries/details/{id}",
+                    defaults: new { controller = "Queries", action = "Details" });
+
                 // Routes for home
                 routes.MapRoute(
                     name: "home",

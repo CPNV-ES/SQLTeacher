@@ -1,0 +1,42 @@
+﻿@model SQLTeacher.Models.Queries
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Statement)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Statement)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formulation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formulation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rank)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rank)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Exercise)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Exercise.Title)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Modifier</a> |
+    <a asp-action="Index">Retour vers la liste</a>
+</div>
