@@ -53,7 +53,7 @@ namespace SQLTeacher.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DbScript,Title,IsActive")] Exercises exercises)
+        public async Task<IActionResult> Create([Bind("Id,DbScript,Title")] Exercises exercises)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace SQLTeacher.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DbScript,Title,IsActive")] Exercises exercises)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DbScript,Title")] Exercises exercises)
         {
             if (id != exercises.Id)
             {
@@ -147,6 +147,39 @@ namespace SQLTeacher.Controllers
         private bool ExercisesExists(int id)
         {
             return _context.Exercises.Any(e => e.Id == id);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<bool> Activate(int id, [FromBody] Exercises exercises)
+        {
+            if (id != exercises.Id)
+            {
+                return false;
+            }
+            try
+            {
+                foreach(Exercises exercise in await _context.Exercises.ToListAsync())
+                {
+                    exercise.IsActive = false;
+                    _context.Update(exercise);
+                    await _context.SaveChangesAsync();
+                }
+
+                Exercises oldExercises = await _context.Exercises.FirstOrDefaultAsync(m => m.Id == id);
+                if (oldExercises == null)
+                {
+                    return false;
+                }
+                oldExercises.IsActive = exercises.IsActive;
+                _context.Update(oldExercises);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
