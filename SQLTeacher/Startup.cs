@@ -78,6 +78,10 @@ namespace SQLTeacher
                     name: "exercises-detail",
                     template: "exercises/details/{id}",
                     defaults: new { controller = "Exercises", action = "Details" });
+                routes.MapRoute(
+                    name: "exercises-activate",
+                    template: "exercises/activate/{id}",
+                    defaults: new { controller = "Exercises", action = "Activate" });
 
                 // Routes for queries
                 routes.MapRoute(

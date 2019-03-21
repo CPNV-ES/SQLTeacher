@@ -80,7 +80,8 @@ CREATE TABLE people (
 CREATE TABLE exercises (
   id INT NOT NULL IDENTITY PRIMARY KEY,
   db_script VARCHAR(5000) NOT NULL,
-  title VARCHAR(5000) NOT NULL);
+  title VARCHAR(5000) NOT NULL,
+  is_active BIT NOT NULL DEFAULT 0);
 
 
 -- -----------------------------------------------------

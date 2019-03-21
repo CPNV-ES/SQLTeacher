@@ -9,14 +9,21 @@
 <p>
     <a asp-action="Create">Ajouter un exercice</a>
 </p>
+@Html.AntiForgeryToken()
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DbScript)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
             </th>
             <th></th>
         </tr>
@@ -24,11 +31,17 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td class="colId">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DbScript)
+            </td>
+            <td>
+                @Html.EditorFor(modelItem => item.IsActive, new { htmlAttributes = new { @class = "isActiveCheckBox" } })
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |

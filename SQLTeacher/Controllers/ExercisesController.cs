@@ -148,5 +148,38 @@ namespace SQLTeacher.Controllers
         {
             return _context.Exercises.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<bool> Activate(int id, [FromBody] Exercises exercises)
+        {
+            if (id != exercises.Id)
+            {
+                return false;
+            }
+            try
+            {
+                foreach(Exercises exercise in await _context.Exercises.ToListAsync())
+                {
+                    exercise.IsActive = false;
+                    _context.Update(exercise);
+                    await _context.SaveChangesAsync();
+                }
+
+                Exercises oldExercises = await _context.Exercises.FirstOrDefaultAsync(m => m.Id == id);
+                if (oldExercises == null)
+                {
+                    return false;
+                }
+                oldExercises.IsActive = exercises.IsActive;
+                _context.Update(oldExercises);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
