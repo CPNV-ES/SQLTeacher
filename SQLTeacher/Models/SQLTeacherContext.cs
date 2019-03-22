@@ -66,15 +66,13 @@ namespace SQLTeacher.Models
                     .HasMaxLength(5000)
                     .IsUnicode(false);
 
+                entity.Property(e => e.IsActive).HasColumnName("is_active");
+
                 entity.Property(e => e.Title)
                     .IsRequired()
                     .HasColumnName("title")
                     .HasMaxLength(5000)
                     .IsUnicode(false);
-
-                entity.Property(e => e.IsActive)
-                    .IsRequired()
-                    .HasColumnName("is_active");
             });
 
             modelBuilder.Entity<Participants>(entity =>
@@ -104,6 +102,10 @@ namespace SQLTeacher.Models
             {
                 entity.ToTable("people");
 
+                entity.HasIndex(e => e.PinCode)
+                    .HasName("UQ__people__953E01E993F41486")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Acronym)
@@ -130,6 +132,8 @@ namespace SQLTeacher.Models
                     .HasColumnName("lastname")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.PinCode).HasColumnName("pin_code");
 
                 entity.Property(e => e.RoleId).HasColumnName("role_id");
 

@@ -18,6 +18,7 @@ namespace SQLTeacher.Models
         public string Acronym { get; set; }
         public int ClasseId { get; set; }
         public int RoleId { get; set; }
+        public int PinCode { get; set; }
 
         public Classes Classe { get; set; }
         public Roles Role { get; set; }
