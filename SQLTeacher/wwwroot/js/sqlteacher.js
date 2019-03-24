@@ -33,3 +33,12 @@ $('.isActiveCheckBox').change(sender => {
         }
     })
 })
+
+$('.submitQuery').click(sender => {
+    // Get the query of the sender
+    const query = sender.currentTarget.parentElement.parentElement.getElementsByClassName('queryResponse')[0].value
+    // Get the id of the sender
+    const currentId = sender.currentTarget.parentElement.parentElement.getElementsByClassName('colId')[0].innerText
+
+    console.log(currentId)
+})

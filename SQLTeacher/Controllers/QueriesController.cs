@@ -25,6 +25,20 @@ namespace SQLTeacher.Controllers
             return View(await sQLTeacherContext.ToListAsync());
         }
 
+        // GET: Queries from activated exercices
+        public async Task<IActionResult> Exam()
+        {
+            try
+            {
+                var activeExercice = _context.Exercises.Where(ex => ex.IsActive == true).First();
+                var sQLTeacherContext = _context.Queries.Where(qrs => qrs.ExerciseId == activeExercice.Id).OrderBy(sort => sort.Rank);
+                return View(await sQLTeacherContext.ToListAsync());
+            } catch (Exception err)
+            {
+                return NotFound();
+            }
+        }
+
         // GET: Queries/Details/5
         public async Task<IActionResult> Details(int? id)
         {

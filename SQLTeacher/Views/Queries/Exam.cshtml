@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SQLTeacher.Models.Queries>
+
+@{
+    ViewData["Title"] = "Liste des questions";
+}
+
+<h2>Liste des questions</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formulation)
+            </th>
+            <th>
+               Réponse
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="colId">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Formulation)
+                </td>
+                <td>
+                    @Html.Editor("text", new { htmlAttributes = new { @class = "queryResponse" } })
+                </td>
+                <td>
+                    <input type="button" value="Soumettre" class="btn btn-default submitQuery" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

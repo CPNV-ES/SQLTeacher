@@ -57,6 +57,13 @@ namespace SQLTeacher
 
             app.UseMvc(routes =>
             {
+
+                // Custom routes
+                routes.MapRoute(
+                    name: "exam",
+                    template: "exam",
+                    defaults: new { controller = "Queries", action = "Exam" });
+
                 // Routes for exercises
                 routes.MapRoute(
                     name: "exercises",
