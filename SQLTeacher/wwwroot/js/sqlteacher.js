@@ -40,5 +40,5 @@ $('.submitQuery').click(sender => {
     // Get the id of the sender
     const currentId = sender.currentTarget.parentElement.parentElement.getElementsByClassName('colId')[0].innerText
 
-    console.log(currentId)
+
 })
