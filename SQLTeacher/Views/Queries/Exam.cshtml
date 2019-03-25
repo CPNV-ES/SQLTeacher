@@ -5,6 +5,8 @@
 }
 
 <h2>Liste des questions</h2>
+@Html.DisplayName("Code pin"): 
+@Html.Editor("number", new { htmlAttributes = new { @id = "pinCode" } })
 <table class="table">
     <thead>
         <tr>
@@ -37,10 +39,10 @@
                     @Html.DisplayFor(modelItem => item.Formulation)
                 </td>
                 <td>
-                    @Html.Editor("text", new { htmlAttributes = new { @class = "queryResponse" } })
+                    @Html.Editor("text", new { htmlAttributes = new { @class = "queryResponse form-control" } })
                 </td>
                 <td>
-                    <input type="button" value="Soumettre" class="btn btn-default submitQuery" />
+                    <input type="button" value="Soumettre" class="btn btn-default submitQuery" disabled="disabled" />
                 </td>
             </tr>
         }
