@@ -1,7 +1,4 @@
 ﻿var pinCodeValid = false
-var buttonsValid = $('.submitQuery').toArray().map(button => {
-    return { button: button, queryValid: false }
-})
 
 $('.isActiveCheckBox').change(sender => {
     // Get the current value
@@ -53,19 +50,15 @@ $('#pinCode').keyup(sender => {
     const currentPinCode = sender.currentTarget.value
     pinCodeValid = (currentPinCode.length == 4)
 
-    for (const button of buttonsValid) {
-        button.disabled = !(pinCodeValid && button.queryValid)
+    for (let button of $('.submitQuery').toArray()) {
+        console.log(pinCodeValid)
+        input = button.parentElement.parentElement.getElementsByClassName('queryResponse')[0]
+        button.disabled = !(pinCodeValid && input.value.trim() != "")
     }
 })
 
 $('.queryResponse').keyup(sender => {
     const button = sender.currentTarget.parentElement.parentElement.getElementsByClassName('submitQuery')[0]
 
-    for (const buttonListed of buttonsValid) {
-        if (buttonListed.button == button) {
-            buttonListed.queryValid = (sender.currentTarget.value != "")
-        }
-    }
-
-    button.disabled = !(sender.currentTarget.value != "" && pinCodeValid)
+    button.disabled = !(sender.currentTarget.value.trim() != "" && pinCodeValid)
 })
