@@ -44,21 +44,41 @@ $('.submitQuery').click(sender => {
     // Get the user pin code
     const pinCode = $('#pinCode')[0].value
 
+    // Generate json
+    const jsonData = JSON.stringify({ query: query, pinCode: pinCode })
+
+    $.ajax({
+        url: `/api/checkAnswer/${currentId}`,
+        type: 'POST',
+        data: jsonData,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: response => {
+            console.log(response)
+        },
+        error: response => {
+            console.log(response)
+        }
+    })
+
 })
 
 $('#pinCode').keyup(sender => {
+    // Get the current pin code
     const currentPinCode = sender.currentTarget.value
+    // Check if the pin code is valid
     pinCodeValid = (currentPinCode.length == 4)
 
+    // Update button state
     for (let button of $('.submitQuery').toArray()) {
-        console.log(pinCodeValid)
         input = button.parentElement.parentElement.getElementsByClassName('queryResponse')[0]
         button.disabled = !(pinCodeValid && input.value.trim() != "")
     }
 })
 
 $('.queryResponse').keyup(sender => {
+    // Get the button in the same row
     const button = sender.currentTarget.parentElement.parentElement.getElementsByClassName('submitQuery')[0]
-
+    // Update button state
     button.disabled = !(sender.currentTarget.value.trim() != "" && pinCodeValid)
 })
