@@ -30,20 +30,10 @@ namespace SQLTeacher.Models
                     Object[] numb = new Object[dr.FieldCount];
 
                     // Get the Row with all its column values..
-                    dr.GetValues(values);
+                    dr.GetValues(numb);
 
                     // Add this Row to ArrayList.
-                    al.Add(values);
-                    //Get Function
-                    /*TheAuthor.Auid = GetSafeDbString(dr, "au_id");
-                    TheAuthor.Aulname = GetSafeDbString(dr, "au_lname");
-                    TheAuthor.Aufname = GetSafeDbString(dr, "au_fname");
-                    TheAuthor.Phone = GetSafeDbString(dr, "phone");
-                    TheAuthor.Address = GetSafeDbString(dr, "address");
-                    TheAuthor.City = GetSafeDbString(dr, "city");
-                    TheAuthor.State = GetSafeDbString(dr, "state");
-                    TheAuthor.Zip = GetSafeDbString(dr, "zip");
-                    TheAuthor.Contract = GetSafeDbBool(dr, "contract");*/
+                    al.Add(numb);
                 }
             }
             finally
