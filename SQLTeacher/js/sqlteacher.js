@@ -59,6 +59,5 @@ $('#pinCode').keyup(sender => {
 
 $('.queryResponse').keyup(sender => {
     const button = sender.currentTarget.parentElement.parentElement.getElementsByClassName('submitQuery')[0]
-
     button.disabled = !(sender.currentTarget.value.trim() != "" && pinCodeValid)
 })

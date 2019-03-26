@@ -159,6 +159,7 @@ namespace SQLTeacher.Controllers
             }
             try
             {
+                // Put all exercises to false
                 foreach(Exercises exercise in await _context.Exercises.ToListAsync())
                 {
                     exercise.IsActive = false;
@@ -166,11 +167,13 @@ namespace SQLTeacher.Controllers
                     await _context.SaveChangesAsync();
                 }
 
+                // Get the current exersise
                 Exercises oldExercises = await _context.Exercises.FirstOrDefaultAsync(m => m.Id == id);
                 if (oldExercises == null)
                 {
                     return false;
                 }
+                // Set the received value and save
                 oldExercises.IsActive = exercises.IsActive;
                 _context.Update(oldExercises);
                 await _context.SaveChangesAsync();
