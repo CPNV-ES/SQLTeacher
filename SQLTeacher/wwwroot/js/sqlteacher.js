@@ -53,8 +53,8 @@ $('.submitQuery').click(sender => {
         data: jsonData,
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        success: response => {
-            console.log(response)
+        success: (response, status) => {
+            console.log(`${response} ${status}`)
         },
         error: response => {
             console.log(response)

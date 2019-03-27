@@ -103,7 +103,7 @@ namespace SQLTeacher.Models
                 entity.ToTable("people");
 
                 entity.HasIndex(e => e.PinCode)
-                    .HasName("UQ__people__953E01E993F41486")
+                    .HasName("UQ__people__953E01E9A37E65B2")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");

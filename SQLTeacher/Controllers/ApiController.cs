@@ -46,10 +46,10 @@ namespace SQLTeacher.Controllers
             }
 
             score.Attempts += 1;
-            score.Success = Convert.ToInt32(currentQuery.checkStatement(response.query));
+            score.Success = currentQuery.checkStatement(response.query);
             _context.Update(score);
             _context.SaveChanges();
-            return true;
+            return score.Success;
         }
 
        /* // GET: api/Api

@@ -5,8 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection;
 
 namespace SQLTeacher.Models
 {

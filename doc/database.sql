@@ -107,7 +107,7 @@ CREATE TABLE participants (
 -- -----------------------------------------------------
 CREATE TABLE scores (
   id INT NOT NULL IDENTITY PRIMARY KEY,
-  success INT NOT NULL DEFAULT 0,
+  success BIT NOT NULL DEFAULT 0,
   attempts INT NOT NULL,
   people_id INT NOT NULL,
   querie_id INT NOT NULL);
