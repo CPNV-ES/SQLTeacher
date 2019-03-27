@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 
 namespace SQLTeacher.Models
 {
@@ -63,16 +65,7 @@ namespace SQLTeacher.Models
                 conn.Dispose();
             }
 
-            for (int i = 0; i < dataFromStudent.Count; i++)
-            {
-                if (dataFromStudent[i].Equals(dataCorrect[i]))
-                {
-                    var tutu = false;
-                    break;
-                }
-            }
-
-            return (query == this.Statement);
+            return (JsonConvert.SerializeObject(dataCorrect) == JsonConvert.SerializeObject(dataFromStudent));
         }
     }
 
