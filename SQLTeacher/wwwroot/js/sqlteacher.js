@@ -37,8 +37,10 @@ $('.isActiveCheckBox').change(sender => {
 })
 
 $('.submitQuery').click(sender => {
+    // Get the query input
+    const queryInput = sender.currentTarget.parentElement.parentElement.getElementsByClassName('queryResponse')[0]
     // Get the query of the sender
-    const query = sender.currentTarget.parentElement.parentElement.getElementsByClassName('queryResponse')[0].value
+    const query = queryInput.value
     // Get the id of the sender
     const currentId = sender.currentTarget.parentElement.parentElement.getElementsByClassName('colId')[0].innerText
     // Get the user pin code
@@ -53,8 +55,15 @@ $('.submitQuery').click(sender => {
         data: jsonData,
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        success: (response, status) => {
-            console.log(`${response} ${status}`)
+        success: (response) => {
+            if (response) {
+                queryInput.classList.remove('inputError')
+                queryInput.classList.add('inputSuccess')
+            } else {
+                queryInput.classList.remove('inputSuccess')
+                queryInput.classList.add('inputError')
+            }
+            
         },
         error: response => {
             console.log(response)
@@ -77,6 +86,9 @@ $('#pinCode').keyup(sender => {
 })
 
 $('.queryResponse').keyup(sender => {
+    // Remove the shadow
+    sender.currentTarget.classList.remove('inputError')
+    sender.currentTarget.classList.remove('inputSuccess')
     // Get the button in the same row
     const button = sender.currentTarget.parentElement.parentElement.getElementsByClassName('submitQuery')[0]
     // Update button state

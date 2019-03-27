@@ -1,10 +1,10 @@
 [
-  /*{
-    "outputFileName": "wwwroot/css/site.min.css",
+  {
+    "outputFileName": "wwwroot/css/sqlteacher.min.css",
     "inputFiles": [
-      "wwwroot/css/site.css"
+      "css/sqlteacher.css"
     ]
-  },*/
+  },
   {
     "outputFileName": "wwwroot/js/sqlteacher.js",
     "inputFiles": [

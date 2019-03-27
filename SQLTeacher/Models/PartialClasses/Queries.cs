@@ -57,6 +57,10 @@ namespace SQLTeacher.Models
                 }
                 dr.Close();
             }
+            catch (Exception err)
+            {
+                return false;
+            }
             finally
             {
                 conn.Close();

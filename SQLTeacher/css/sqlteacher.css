@@ -1,0 +1,11 @@
+﻿.inputSuccess {
+    box-shadow: 0 0 5px rgba(76, 175, 80, 1);
+}
+
+.inputError {
+    box-shadow: 0 0 5px rgba(244 ,67, 54, 1);
+}
+
+#pinCode {
+    width: auto;
+}
