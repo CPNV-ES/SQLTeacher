@@ -57,9 +57,11 @@ $('.submitQuery').click(sender => {
         dataType: 'json',
         success: (response) => {
             if (response) {
+                // Put green shadow
                 queryInput.classList.remove('inputError')
                 queryInput.classList.add('inputSuccess')
             } else {
+                // Put red shadow
                 queryInput.classList.remove('inputSuccess')
                 queryInput.classList.add('inputError')
             }
