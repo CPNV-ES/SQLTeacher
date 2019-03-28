@@ -30,12 +30,12 @@ namespace SQLTeacher.Controllers
         {
             try
             {
-                var activeExercice = _context.Exercises.Where(ex => ex.IsActive == true).First();
+                var activeExercice = _context.Exercises.Where(ex => ex.IsActive == true).FirstOrDefault();
                 var sQLTeacherContext = _context.Queries.Where(qrs => qrs.ExerciseId == activeExercice.Id).OrderBy(sort => sort.Rank);
                 return View(await sQLTeacherContext.ToListAsync());
             } catch (Exception err)
             {
-                return NotFound();
+                return View();
             }
         }
 

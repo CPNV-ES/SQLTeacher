@@ -5,46 +5,52 @@
 }
 
 <h2>Liste des questions</h2>
-@Html.DisplayName("Code pin"): 
-@Html.Editor("pinCode", new { htmlAttributes = new { @id = "pinCode", @class = "form-control", @type = "number" } })
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rank)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Formulation)
-            </th>
-            <th>
-               Réponse
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@if (Model == null)
+{
+    <p>Aucun examens n'est activé</p>
+}
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td class="colId">
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rank)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Formulation)
-                </td>
-                <td>
-                    @Html.Editor("text", new { htmlAttributes = new { @class = "queryResponse form-control" } })
-                </td>
-                <td>
-                    <input type="button" value="Soumettre" class="btn btn-default submitQuery" disabled="disabled" />
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rank)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Formulation)
+                </th>
+                <th>
+                    Réponse
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colId">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rank)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Formulation)
+                    </td>
+                    <td>
+                        @Html.Editor("text", new { htmlAttributes = new { @class = "queryResponse form-control" } })
+                    </td>
+                    <td>
+                        <input type="button" value="Soumettre" class="btn btn-default submitQuery" disabled="disabled" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
