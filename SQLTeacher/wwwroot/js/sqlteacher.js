@@ -79,6 +79,33 @@ $('#pinCode').keyup(sender => {
     const currentPinCode = sender.currentTarget.value
     // Check if the pin code is valid
     pinCodeValid = (currentPinCode.length == 4)
+    if (pinCodeValid) {
+        // Generate json
+        const jsonData = JSON.stringify({ pinCode: currentPinCode })
+
+        $.ajax({
+            url: `/api/checkPinCode`,
+            type: 'POST',
+            data: jsonData,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: (response) => {
+                pinCodeValid = response
+                if (response) {
+
+                    sender.currentTarget.classList.remove('inputError')
+                    sender.currentTarget.classList.add('inputSuccess')
+                } else {
+
+                    sender.currentTarget.classList.remove('inputSuccess')
+                    sender.currentTarget.classList.add('inputError')
+                }
+            },
+            error: response => {
+                pinCodeValid = false
+            }
+        })
+    }
 
     // Update button state
     for (let button of $('.submitQuery').toArray()) {

@@ -52,106 +52,113 @@ namespace SQLTeacher.Controllers
             return score.Success;
         }
 
-       /* // GET: api/Api
-        [HttpGet("queries")]
-        public IEnumerable<Queries> GetQueries()
+        [HttpPost("checkPinCode")]
+        public Boolean checkPinCode(QueryResponse response)
         {
-            return _context.Queries;
+            People currentStudent = _context.People.FirstOrDefault(p => p.PinCode == response.pinCode);
+            return currentStudent != null;
         }
 
-        // GET: api/Api/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetQueries([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        /* // GET: api/Api
+         [HttpGet("queries")]
+         public IEnumerable<Queries> GetQueries()
+         {
+             return _context.Queries;
+         }
 
-            var queries = await _context.Queries.FindAsync(id);
+         // GET: api/Api/5
+         [HttpGet("{id}")]
+         public async Task<IActionResult> GetQueries([FromRoute] int id)
+         {
+             if (!ModelState.IsValid)
+             {
+                 return BadRequest(ModelState);
+             }
 
-            if (queries == null)
-            {
-                return NotFound();
-            }
+             var queries = await _context.Queries.FindAsync(id);
 
-            return Ok(queries);
-        }
+             if (queries == null)
+             {
+                 return NotFound();
+             }
 
-        // PUT: api/Api/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutQueries([FromRoute] int id, [FromBody] Queries queries)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+             return Ok(queries);
+         }
 
-            if (id != queries.Id)
-            {
-                return BadRequest();
-            }
+         // PUT: api/Api/5
+         [HttpPut("{id}")]
+         public async Task<IActionResult> PutQueries([FromRoute] int id, [FromBody] Queries queries)
+         {
+             if (!ModelState.IsValid)
+             {
+                 return BadRequest(ModelState);
+             }
 
-            _context.Entry(queries).State = EntityState.Modified;
+             if (id != queries.Id)
+             {
+                 return BadRequest();
+             }
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!QueriesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+             _context.Entry(queries).State = EntityState.Modified;
 
-            return NoContent();
-        }
+             try
+             {
+                 await _context.SaveChangesAsync();
+             }
+             catch (DbUpdateConcurrencyException)
+             {
+                 if (!QueriesExists(id))
+                 {
+                     return NotFound();
+                 }
+                 else
+                 {
+                     throw;
+                 }
+             }
 
-        // POST: api/Api
-        [HttpPost]
-        public async Task<IActionResult> PostQueries([FromBody] Queries queries)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+             return NoContent();
+         }
 
-            _context.Queries.Add(queries);
-            await _context.SaveChangesAsync();
+         // POST: api/Api
+         [HttpPost]
+         public async Task<IActionResult> PostQueries([FromBody] Queries queries)
+         {
+             if (!ModelState.IsValid)
+             {
+                 return BadRequest(ModelState);
+             }
 
-            return CreatedAtAction("GetQueries", new { id = queries.Id }, queries);
-        }
+             _context.Queries.Add(queries);
+             await _context.SaveChangesAsync();
 
-        // DELETE: api/Api/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteQueries([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+             return CreatedAtAction("GetQueries", new { id = queries.Id }, queries);
+         }
 
-            var queries = await _context.Queries.FindAsync(id);
-            if (queries == null)
-            {
-                return NotFound();
-            }
+         // DELETE: api/Api/5
+         [HttpDelete("{id}")]
+         public async Task<IActionResult> DeleteQueries([FromRoute] int id)
+         {
+             if (!ModelState.IsValid)
+             {
+                 return BadRequest(ModelState);
+             }
 
-            _context.Queries.Remove(queries);
-            await _context.SaveChangesAsync();
+             var queries = await _context.Queries.FindAsync(id);
+             if (queries == null)
+             {
+                 return NotFound();
+             }
 
-            return Ok(queries);
-        }
+             _context.Queries.Remove(queries);
+             await _context.SaveChangesAsync();
 
-        private bool QueriesExists(int id)
-        {
-            return _context.Queries.Any(e => e.Id == id);
-        }*/
+             return Ok(queries);
+         }
+
+         private bool QueriesExists(int id)
+         {
+             return _context.Queries.Any(e => e.Id == id);
+         }*/
     }
 }

@@ -12,6 +12,10 @@
 
 @if (Model != null)
 {
+    <div>
+        @Html.DisplayName("Code pin"):
+        @Html.Editor("pinCode", new { htmlAttributes = new { @id = "pinCode", @class = "form-control", @type = "number" } })
+    </div>
     <table class="table">
         <thead>
             <tr>
