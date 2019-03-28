@@ -123,3 +123,33 @@ $('.queryResponse').keyup(sender => {
     // Update button state
     button.disabled = !(sender.currentTarget.value.trim() != "" && pinCodeValid)
 })
+
+if (document.getElementById('examInfosPage')) {
+    putScoresInTable()
+    window.setInterval(() => putScoresInTable(), 5000)
+}
+
+function getScores() {
+    return $.ajax({
+        url: `/api/scores`,
+        type: 'GET'
+    })
+}
+
+function putScoresInTable() {
+    getScores().then(scores => {
+        scores.forEach(score => {
+            if (score.success) {
+                getCell(score.peopleId, score.querieId)[0].style.backgroundColor = 'rgba(76, 175, 80, 0.4)'
+            } else {
+                getCell(score.peopleId, score.querieId)[0].style.backgroundColor = 'rgba(244 ,67, 54, 0.4)'
+            }
+        })
+    })
+}
+
+function getCell(column, row) {
+    var column = $('#people' + column).index();
+    var row = $('#query' + row)
+    return row.find('td').eq(column);
+}

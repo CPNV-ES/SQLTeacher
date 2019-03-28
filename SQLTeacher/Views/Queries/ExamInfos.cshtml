@@ -1,0 +1,38 @@
+﻿@model Dictionary<int, Dictionary<string, Boolean>>
+
+@{
+    ViewData["Title"] = "Liste des questions";
+}
+
+<h2 id="examInfosPage">Liste des questions</h2>
+@if (Model == null)
+{
+    <p>Aucun examens n'est activé</p>
+}
+
+@if (Model != null)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Query / Student</th>
+                @foreach (var people in ViewBag.people)
+                {
+                    <th id="people@(people.Id)">@people.Acronym</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var query in ViewBag.queries)
+            {
+                <tr id="query@(query.Id)">
+                    <td>@query.Formulation</td>
+                    @for (int i = 0; i < ViewBag.people.Count; i++)
+                    {
+                        <td></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -33,7 +33,37 @@ namespace SQLTeacher.Controllers
                 var activeExercice = _context.Exercises.Where(ex => ex.IsActive == true).FirstOrDefault();
                 var sQLTeacherContext = _context.Queries.Where(qrs => qrs.ExerciseId == activeExercice.Id).OrderBy(sort => sort.Rank);
                 return View(await sQLTeacherContext.ToListAsync());
-            } catch (Exception err)
+            } catch (Exception)
+            {
+                return View();
+            }
+        }
+
+        // GET: Queries from activated exercices
+        public IActionResult ExamInfos()
+        {
+            Dictionary<int, Dictionary<string, Boolean>> result = new Dictionary<int, Dictionary<string, bool>>();
+            try
+            {
+                var activeExercice = _context.Exercises.Where(ex => ex.IsActive == true).FirstOrDefault();
+                var queries = _context.Queries.Where(qrs => qrs.ExerciseId == activeExercice.Id).OrderBy(sort => sort.Rank).ToList();
+                var people = _context.People.ToList();
+
+                ViewBag.people = people;
+                ViewBag.queries = queries;
+                foreach (Queries query in queries)
+                {
+                    Dictionary<string, Boolean> tempPerson = new Dictionary<string, bool>();
+                    foreach (People person in people)
+                    {
+                        tempPerson.Add(person.Acronym, true);
+                    }
+                    result.Add(query.Id, tempPerson);
+                }
+
+                return View(result);
+            }
+            catch (Exception)
             {
                 return View();
             }

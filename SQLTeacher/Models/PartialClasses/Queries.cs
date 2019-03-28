@@ -57,7 +57,7 @@ namespace SQLTeacher.Models
                 }
                 dr.Close();
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 return false;
             }

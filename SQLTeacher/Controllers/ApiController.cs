@@ -59,6 +59,12 @@ namespace SQLTeacher.Controllers
             return currentStudent != null;
         }
 
+        [HttpGet("scores")]
+        public IEnumerable<Scores> getScores()
+        {
+            return _context.Scores;
+        }
+
         /* // GET: api/Api
          [HttpGet("queries")]
          public IEnumerable<Queries> GetQueries()

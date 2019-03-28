@@ -63,6 +63,10 @@ namespace SQLTeacher
                     name: "exam",
                     template: "exam",
                     defaults: new { controller = "Queries", action = "Exam" });
+                routes.MapRoute(
+                    name: "examInfos",
+                    template: "examInfos",
+                    defaults: new { controller = "Queries", action = "ExamInfos" });
 
                 // Routes for exercises
                 routes.MapRoute(
