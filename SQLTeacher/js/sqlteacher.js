@@ -105,6 +105,9 @@ $('#pinCode').keyup(sender => {
                 pinCodeValid = false
             }
         })
+    } else {
+        sender.currentTarget.classList.remove('inputSuccess')
+        sender.currentTarget.classList.add('inputError')
     }
 
     // Update button state

@@ -55,7 +55,7 @@ namespace SQLTeacher.Controllers
             {
                 var activeExercice = _context.Exercises.Where(ex => ex.IsActive == true).FirstOrDefault();
                 var queries = _context.Queries.Where(qrs => qrs.ExerciseId == activeExercice.Id).OrderBy(sort => sort.Rank).ToList();
-                var people = _context.People.ToList();
+                var people = _context.People.Where(f => f.Role.Name == "student").ToList();
 
                 ViewBag.people = people;
                 ViewBag.queries = queries;
