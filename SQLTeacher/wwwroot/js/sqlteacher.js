@@ -82,7 +82,6 @@ $('#pinCode').keyup(sender => {
     if (pinCodeValid) {
         // Generate json
         const jsonData = JSON.stringify({ pinCode: currentPinCode })
-
         $.ajax({
             url: `/api/checkPinCode`,
             type: 'POST',
@@ -102,6 +101,7 @@ $('#pinCode').keyup(sender => {
                 }
             },
             error: response => {
+                console.log(response)
                 pinCodeValid = false
             }
         })
