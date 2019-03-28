@@ -120,12 +120,12 @@ namespace SQLTeacher
                 routes.MapRoute(
                     name: "home",
                     template: "/",
-                    defaults: new { controller = "Home", action = "Index" });
+                    defaults: new { controller = "Start", action = "Index" });
 
                 // Default
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Start}/{action=Index}/{id?}");
             });
         }
     }

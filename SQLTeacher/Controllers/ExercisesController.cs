@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SQLTeacher.Models;
@@ -16,6 +17,13 @@ namespace SQLTeacher.Controllers
         public ExercisesController(SQLTeacherContext context)
         {
             _context = context;
+        }
+
+        // Before loading any page
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            ViewBag.user = StartController._currentUser; //Put user in viewbag
+            base.OnActionExecuting(filterContext);
         }
 
         // GET: Exercises

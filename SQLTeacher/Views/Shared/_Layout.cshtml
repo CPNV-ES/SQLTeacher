@@ -31,11 +31,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Accueil</a></li>
-                    <li><a asp-area="" asp-controller="Exercises" asp-action="Index">Exercices</a></li>
-                    <li><a asp-area="" asp-controller="Queries" asp-action="Index">Questions</a></li>
+                    <li><a asp-area="" asp-controller="Start" asp-action="Index">Accueil</a></li>
+                    @if (ViewBag.user.Role.Name == "teacher")
+                    {
+                        <li><a asp-area="" asp-controller="Exercises" asp-action="Index">Exercices</a></li>
+                        <li><a asp-area="" asp-controller="Queries" asp-action="Index">Questions</a></li>
+                        <li><a asp-area="" asp-controller="Queries" asp-action="ExamInfos">Informations examen</a></li>
+                    }
                     <li><a asp-area="" asp-controller="Queries" asp-action="Exam">Examen</a></li>
-                    <li><a asp-area="" asp-controller="Queries" asp-action="ExamInfos">Informations examen</a></li>
                 </ul>
             </div>
         </div>
