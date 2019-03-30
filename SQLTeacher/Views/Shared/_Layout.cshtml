@@ -32,13 +32,27 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Start" asp-action="Index">Accueil</a></li>
-                    @if (ViewBag.user.Role.Name == "teacher")
+                    @if (ViewBag.user != null && ViewBag.user.Role.Name == "teacher")
                     {
                         <li><a asp-area="" asp-controller="Exercises" asp-action="Index">Exercices</a></li>
                         <li><a asp-area="" asp-controller="Queries" asp-action="Index">Questions</a></li>
                         <li><a asp-area="" asp-controller="Queries" asp-action="ExamInfos">Informations examen</a></li>
                     }
                     <li><a asp-area="" asp-controller="Queries" asp-action="Exam">Examen</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a>
+                            @if (ViewBag.user != null)
+                            {
+                                @:Connecté en tant que: @ViewBag.user.Firstname @Html.Raw(" ") @ViewBag.user.Lastname @Html.Raw(" (") @ViewBag.user.Role.Name @Html.Raw(")")
+                            }
+                            else
+                            {
+                                @:Pas connecté
+                            }
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
