@@ -26,7 +26,8 @@ namespace SQLTeacher.Controllers
             if (_currentUser == null)
             {
                 return RedirectToAction("Exam", "Queries");
-            } else if (_currentUser.Role.Name == "teacher")
+            }
+            else if (_currentUser.Role.Name == "teacher")
             {
                 return RedirectToAction("Index", "Exercises");
             }
