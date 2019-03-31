@@ -23,6 +23,11 @@ namespace SQLTeacher.Controllers
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             ViewBag.user = StartController._currentUser; //Put user in viewbag
+            if (ViewBag.user.Role.Name != "teacher")
+            {
+                filterContext.Result = new RedirectToRouteResult('/');
+                return;
+            }
             base.OnActionExecuting(filterContext);
         }
 

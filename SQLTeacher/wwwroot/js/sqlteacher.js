@@ -1,3 +1,4 @@
+// Global variable and classes
 var pinCodeValid = false
 
 $('.isActiveCheckBox').change(sender => {

@@ -1,4 +1,5 @@
-﻿var pinCodeValid = false
+﻿// Global variable and classes
+var pinCodeValid = false
 
 $('.isActiveCheckBox').change(sender => {
     // Get the current value
