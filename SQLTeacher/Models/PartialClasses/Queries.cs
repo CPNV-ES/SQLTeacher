@@ -11,12 +11,13 @@ namespace SQLTeacher.Models
     [ModelMetadataType(typeof(QueriesMetadata))]
     public partial class Queries
     {
-        public Boolean checkStatement(string query)
+
+        public Boolean checkStatement(string query, string connectionString)
         {
             ArrayList dataFromStudent = new ArrayList();
             ArrayList dataCorrect = new ArrayList();
 
-            SqlConnection conn = new SqlConnection("Server=localhost;Database=TestExercice1;Trusted_Connection=True;");
+            SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand();
             SqlDataReader dr;
             try

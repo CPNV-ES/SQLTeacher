@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using SQLTeacher.Models;
 
 namespace SQLTeacher.Controllers
@@ -21,10 +22,12 @@ namespace SQLTeacher.Controllers
         }
 
         private readonly SQLTeacherContext _context;
+        private readonly IConfiguration _configuration;
 
-        public ApiController(SQLTeacherContext context)
+        public ApiController(SQLTeacherContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         [HttpPost("checkAnswer/{id}")]
@@ -46,7 +49,7 @@ namespace SQLTeacher.Controllers
             }
 
             score.Attempts += 1;
-            score.Success = currentQuery.checkStatement(response.query);
+            score.Success = currentQuery.checkStatement(response.query, _configuration["ConnectionStrings:ExerciseConnection"]);
             _context.Update(score);
             _context.SaveChanges();
             return score.Success;
