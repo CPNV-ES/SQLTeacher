@@ -29,4 +29,4 @@ You can find the pinCode in the `people` table in the database.
 
 With the seeder, only `Xavier Carrel` is a teacher.
 
-If the pinCode in the config doesn't exists. You are considered like a student but not you aren't going to be authenticated
+If the pinCode in the config doesn't exists. You are considered like a student but you aren't going to be authenticated
