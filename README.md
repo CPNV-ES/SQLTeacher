@@ -20,3 +20,13 @@ With Sql Server Management Studio, execute `/doc/database.sql`
 Seed database with `/doc/seeder.sql`
 
 And execute the `/doc/exercice_1.sql` file to have a database for testing.
+
+## Authentication
+
+If you want to change the authenticated user, you must change the pinCode in the `Config.cs` file.
+
+You can find the pinCode in the `people` table in the database.
+
+With the seeder, only `Xavier Carrel` is a teacher.
+
+If the pinCode in the config doesn't exists. You are considered like a student but not you aren't going to be authenticated
