@@ -11,5 +11,9 @@
 }
 
 .question {
-    border: solid;
+    margin: 20px;
+}
+
+.removeQuestion {
+    margin-top: 10px;
 }
