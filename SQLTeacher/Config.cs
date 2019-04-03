@@ -7,6 +7,6 @@ namespace SQLTeacher
 {
     public static class config
     {
-        public static int pinCode = 6810;
+        public static int pinCode = 7782;
     }
 }

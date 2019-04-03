@@ -120,6 +120,20 @@ namespace SQLTeacher.Controllers
             return View(queries);
         }
 
+        [HttpPost]
+        public Boolean CreateFromExercise([FromBody] List<Queries> queries)
+        {
+            foreach (Queries querie in queries)
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Add(querie);
+                }
+            }
+            _context.SaveChanges();
+            return true;
+        }
+
         // GET: Queries/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

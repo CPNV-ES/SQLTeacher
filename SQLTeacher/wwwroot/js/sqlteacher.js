@@ -157,3 +157,64 @@ function getCell(column, row) {
     var row = $('#query' + row)
     return row.find('td').eq(column);
 }
+
+// Exam Part
+$('#addQuestion').click(sender => {
+    // Get template form
+    let template = $('#hidden-template').html();
+
+    // Get the questions aera
+    let questionArea = $('#questionsList')
+
+    // Add question inputs
+    questionArea.append(template)
+})
+
+$('#submitButton').click(sender => {
+    // Get all the question
+    let questions = $('#questionsList').children('.question')
+
+    // Get 2 field
+    let title = $('#Title')[0].value
+    let dbScript = $('#DbScript')[0].value
+    // Create jsonDataExercises
+    let jsonDataExercise = JSON.stringify({ 'title': title, 'dbScript': dbScript })
+
+    // Create exercises
+    $.ajax({
+        url: `/exercises/create`,
+        type: 'POST',
+        data: jsonDataExercise,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            // Create jsonDataQuestion
+            let jsonDataQuestion = new Array()
+
+            questions.toArray().forEach((question, index) => {
+                index++
+                jsonDataQuestion.push({ 'statement': question.children[1].value, 'formulation': question.children[3].value, 'rank': index, 'exerciseId': response })
+            })
+            // Create queries
+            $.ajax({
+                url: `/queries/CreateFromExercise`,
+                type: 'POST',
+                data: JSON.stringify(jsonDataQuestion),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response) {
+                        window.location.href = '/exercises'
+                    }
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            })
+        },
+        error: function (response) {
+            console.log(response)
+        }
+    })
+    
+})

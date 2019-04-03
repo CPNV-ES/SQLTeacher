@@ -65,16 +65,16 @@ namespace SQLTeacher.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DbScript,Title")] Exercises exercises)
+        //[ValidateAntiForgeryToken]
+        public int Create([FromBody] Exercises exercises)
         {
-            if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
                 _context.Add(exercises);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                _context.SaveChanges();
+                return _context.Exercises.Max(item => item.Id);
             }
-            return View(exercises);
+            return 0;
         }
 
         // GET: Exercises/Edit/5

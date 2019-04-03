@@ -9,3 +9,7 @@
 #pinCode {
     width: auto;
 }
+
+.question {
+    border: solid;
+}
